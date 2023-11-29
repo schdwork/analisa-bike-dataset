@@ -74,7 +74,7 @@ with col2:
 # Distribution section
 st.subheader('Distribusi Jumlah Peminjam Sepeda')
 fig, ax = plt.subplots(figsize=(12,5))
-sns.pointplot(data=hours_cleaned_df, x='hour', y='count', hue='season', ax=ax)
+sns.pointplot(data=hours_cleaned_df, x='hour', y='count', hue='season',palette='Set1', ax=ax)
 
 ax.set(
     title='Jumlah Peminjam Sepeda Berdasarkan Musim di Tahun 2011', 
