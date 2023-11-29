@@ -135,7 +135,6 @@ google-cloud-language==2.9.1
 google-cloud-resource-manager==1.10.4
 google-cloud-storage==2.8.0
 google-cloud-translate==3.11.3
-google-colab @ file:///colabtools/dist/google-colab-1.0.0.tar.gz#sha256=d38a63f2fb883d39061be1733f4c56f6fb07d83bf45ed3205789989b68ad46cb
 google-crc32c==1.5.0
 google-generativeai==0.2.2
 google-pasta==0.2.0
