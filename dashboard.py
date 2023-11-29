@@ -27,7 +27,7 @@ def create_rfm_hourly_df(df):
 
 # Order data by dteday and convert dteday to datetime
 col_date = 'dteday'
-hours_cleaned_df = pd.read_csv('hours_cleaned_df.csv')
+hours_cleaned_df = pd.read_csv('hours_cleaned.csv')
 hours_cleaned_df.sort_values(by=col_date, inplace=True)
 hours_cleaned_df.reset_index(inplace=True)
 
@@ -64,11 +64,11 @@ st.subheader('Rekap Tahun 2011')
 col1, col2 = st.columns(2)
 
 with col1:
-    total_rentals_in21011 = hours_cleaned_df.count.sum()
+    total_rentals_in21011 = hours_cleaned_df['count'].sum()
     st.metric("Total Peminjam di 2011", total_rentals_in21011)
 
 with col2:
-    total_rentas_ranged = ranged_df.count.sum()
+    total_rentas_ranged = ranged_df['count'].sum()
     st.metric("Total Peminjam filtered", total_rentas_ranged)
 
 # Distribution section
@@ -114,19 +114,19 @@ with col3:
 fig, ax = plt.subplots(nrows=1, ncols=3, figsize=(30, 6))
 colors = ["#72BCD4", "#72BCD4", "#72BCD4", "#72BCD4", "#72BCD4"]
  
-sns.barplot(y="recency", x="season", data=rfm_season_df.sort_values(by="recency", ascending=True).head(5), palette=colors, ax=ax[0])
+sns.barplot(y="recency", x="season", data=rfm_hourly_df.sort_values(by="recency", ascending=True).head(5), palette=colors, ax=ax[0])
 ax[0].set_ylabel(None)
 ax[0].set_xlabel('Musim')
 ax[0].set_title("Berdasarkan Kebaruan (Hari)", loc="center", fontsize=18)
 ax[0].tick_params(axis ='x', labelsize=15)
  
-sns.barplot(y="frequency", x="season", data=rfm_season_df.sort_values(by="frequency", ascending=False).head(5), palette=colors, ax=ax[1])
+sns.barplot(y="frequency", x="season", data=rfm_hourly_df.sort_values(by="frequency", ascending=False).head(5), palette=colors, ax=ax[1])
 ax[1].set_ylabel(None)
 ax[1].set_xlabel('Musim')
 ax[1].set_title("Berdasarkan Frekuensi", loc="center", fontsize=18)
 ax[1].tick_params(axis='x', labelsize=15)
  
-sns.barplot(y="monetary", x="season", data=rfm_season_df.sort_values(by="monetary", ascending=False).head(5), palette=colors, ax=ax[2])
+sns.barplot(y="monetary", x="season", data=rfm_hourly_df.sort_values(by="monetary", ascending=False).head(5), palette=colors, ax=ax[2])
 ax[2].set_ylabel(None)
 ax[2].set_xlabel('Musim')
 ax[2].set_title("Berdasrkan Total Peminjam", loc="center", fontsize=18)
